@@ -5,6 +5,7 @@ var Schema = mongoose.Schema;
 
 var ThingSchema = new Schema({
   name: String,
+  icon: String,
   info: String,
   active: Boolean
 });

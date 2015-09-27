@@ -2,21 +2,29 @@
 
 <header class="hero-unit" id="banner">
   <div class="container">
-    <h1>'Allo, 'Allo!</h1>
-    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
+    <h1>Free The Vote!</h1>
+
+    <p class="lead">Create and Share custom polls with live results!</p>
+    <a href="/signup">
+      <button class="'btn btn-lg btn-success signUp">Sign Up</button>
+    </a>
   </div>
 </header>
 
-<div class="container">
+<div class="mainContent container">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Features:</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in main.awesomeThings">
-        <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}</a></li>
-      </ul>
+      <div class="col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in main.awesomeThings">
+        <i class="fa {{thing.icon}}"></i>
+        <h2>{{thing.name}}</h2>
+        <p>{{thing.info}}</p>
+      </div>
     </div>
   </div>
 </div>
+<br>
+<br>
+<br>
+<br>
 
 <footer></footer>
