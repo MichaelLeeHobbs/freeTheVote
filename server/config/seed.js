@@ -6,9 +6,10 @@
 'use strict';
 import Thing from '../api/thing/thing.model';
 import User from '../api/user/user.model';
+import Poll from '../api/poll/poll.model';
 
 Thing.find({}).removeAsync()
-  .then(function() {
+  .then(function () {
     Thing.create({
       name: 'Live Results',
       icon: 'fa-bolt',
@@ -25,20 +26,87 @@ Thing.find({}).removeAsync()
   });
 
 User.find({}).removeAsync()
-  .then(function() {
+  .then(function () {
     User.createAsync({
       provider: 'local',
-      name: 'Test User',
-      email: 'test@example.com',
+      name:     'Test User',
+      email:    'test@example.com',
       password: 'test'
     }, {
       provider: 'local',
-      role: 'admin',
-      name: 'Admin',
-      email: 'admin@example.com',
+      role:     'admin',
+      name:     'Admin',
+      email:    'admin@example.com',
       password: 'admin'
     })
-    .then(function() {
-      console.log('finished populating users');
-    });
+      .then(function () {
+        console.log('finished populating users');
+      });
+  });
+
+/*
+ ownerId: Number,
+ name: String,
+ options: [String],
+ votes: [Number],
+ active: Boolean
+ */
+
+var ownerId;
+User.find({email: 'admin@example.com'})
+  .then(function (usr) {
+    ownerId = usr._id;
+  });
+
+Poll.find({}).removeAsync()
+  .then(function () {
+    Thing.create({
+        ownerId: ownerId,
+        name:    'Fake Poll 1',
+        options: ['Fake Option 1', 'Fake Option 2', 'Fake Option 3'],
+        votes:   [5, 7, 9]
+      }, {
+        ownerId: ownerId,
+        name:    'Fake Poll 2',
+        options: ['Fake Option 1', 'Fake Option 2', 'Fake Option 3'],
+        votes:   [5, 7, 9]
+      }, {
+        ownerId: ownerId,
+        name:    'Fake Poll 3',
+        options: ['Fake Option 1', 'Fake Option 2', 'Fake Option 3'],
+        votes:   [5, 7, 9]
+      },
+      {
+        ownerId: ownerId,
+        name:    'Fake Poll 4',
+        options: ['Fake Option 1', 'Fake Option 2', 'Fake Option 3'],
+        votes:   [5, 7, 9]
+      }, {
+        ownerId: ownerId,
+        name:    'Fake Poll 5',
+        options: ['Fake Option 1', 'Fake Option 2', 'Fake Option 3'],
+        votes:   [5, 7, 9]
+      }, {
+        ownerId: ownerId,
+        name:    'Fake Poll 6',
+        options: ['Fake Option 1', 'Fake Option 2', 'Fake Option 3'],
+        votes:   [5, 7, 9]
+      },
+      {
+        ownerId: ownerId,
+        name:    'Fake Poll 7',
+        options: ['Fake Option 1', 'Fake Option 2', 'Fake Option 3'],
+        votes:   [5, 7, 9]
+      }, {
+        ownerId: ownerId,
+        name:    'Fake Poll 8',
+        options: ['Fake Option 1', 'Fake Option 2', 'Fake Option 3'],
+        votes:   [5, 7, 9]
+      }, {
+        ownerId: ownerId,
+        name:    'Fake Poll 9',
+        options: ['Fake Option 1', 'Fake Option 2', 'Fake Option 3'],
+        votes:   [5, 7, 9]
+      }
+    );
   });
