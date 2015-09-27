@@ -60,7 +60,7 @@ User.find({email: 'admin@example.com'})
 
 Poll.find({}).removeAsync()
   .then(function () {
-    Thing.create({
+    Poll.create({
         ownerId: ownerId,
         name:    'Fake Poll 1',
         options: ['Fake Option 1', 'Fake Option 2', 'Fake Option 3'],
