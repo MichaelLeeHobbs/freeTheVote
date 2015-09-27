@@ -8,6 +8,15 @@ var pollCtrlStub = {
   create: 'pollCtrl.create',
   update: 'pollCtrl.update',
   destroy: 'pollCtrl.destroy'
+
+};
+var authServiceStub = {
+  isAuthenticated: function() {
+    return 'authService.isAuthenticated';
+  },
+  hasRole: function(role) {
+    return 'authService.hasRole.' + role;
+  }
 };
 
 var routerStub = {
@@ -25,7 +34,8 @@ var pollIndex = proxyquire('./index.js', {
       return routerStub;
     }
   },
-  './poll.controller': pollCtrlStub
+  './poll.controller': pollCtrlStub,
+  '../../auth/auth.service': authServiceStub
 });
 
 describe('Poll API Router:', function() {
@@ -58,7 +68,7 @@ describe('Poll API Router:', function() {
 
     it('should route to poll.controller.create', function() {
       routerStub.post
-        .withArgs('/', 'pollCtrl.create')
+        .withArgs('/', 'authService.isAuthenticated', 'pollCtrl.create')
         .should.have.been.calledOnce;
     });
 
@@ -68,7 +78,7 @@ describe('Poll API Router:', function() {
 
     it('should route to poll.controller.update', function() {
       routerStub.put
-        .withArgs('/:id', 'pollCtrl.update')
+        .withArgs('/:id', 'authService.isAuthenticated', 'pollCtrl.update')
         .should.have.been.calledOnce;
     });
 
@@ -78,7 +88,7 @@ describe('Poll API Router:', function() {
 
     it('should route to poll.controller.update', function() {
       routerStub.patch
-        .withArgs('/:id', 'pollCtrl.update')
+        .withArgs('/:id', 'authService.isAuthenticated', 'pollCtrl.update')
         .should.have.been.calledOnce;
     });
 
@@ -88,7 +98,7 @@ describe('Poll API Router:', function() {
 
     it('should route to poll.controller.destroy', function() {
       routerStub.delete
-        .withArgs('/:id', 'pollCtrl.destroy')
+        .withArgs('/:id', 'authService.isAuthenticated', 'pollCtrl.destroy')
         .should.have.been.calledOnce;
     });
 

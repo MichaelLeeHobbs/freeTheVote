@@ -54,7 +54,7 @@ describe('Poll API:', function() {
       newPoll.ownerId.should.equal(1337);
       newPoll.name.should.equal('New Poll');
       newPoll.options.should.equal(['Poll 1', 'Poll 2', 'Poll 3']);
-      newPoll.votes.should.equal([0, 0, 0]);
+      newPoll.votes.should.equal([0]);
     });
 
   });

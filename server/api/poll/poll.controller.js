@@ -93,6 +93,21 @@ exports.update = function(req, res) {
     .catch(handleError(res));
 };
 
+// Vote on an existing Poll in the DB
+exports.vote = function(req, res) {
+  if (req.body._id) {
+    delete req.body._id;
+  }
+  Poll.findByIdAsync(req.params.id)
+    .then(function (res){
+      console.log(res);
+    })
+    .then(handleEntityNotFound(res))
+    .then(saveUpdates(req.body))
+    .then(responseWithResult(res))
+    .catch(handleError(res));
+};
+
 // Deletes a Poll from the DB
 exports.destroy = function(req, res) {
   Poll.findByIdAsync(req.params.id)
