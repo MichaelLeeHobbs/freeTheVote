@@ -5,6 +5,7 @@ angular.module('freeTheVoteApp')
     $routeProvider
       .when('/poll', {
         templateUrl: 'app/poll/poll.html',
-        controller: 'PollCtrl'
+        controller: 'PollCtrl',
+        controllerAs: 'poll'
       });
   });
