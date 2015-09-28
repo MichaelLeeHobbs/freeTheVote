@@ -14,7 +14,9 @@
 
         <h3>{{poll.name}}</h3>
         <ol>
-          <li ng-repeat="options in poll.options">{{options}}</li>
+          <li ng-repeat="options in poll.options">{{options}}
+            <span> votes: {{poll.votes[$index]}}</span>
+          </li>
         </ol>
 
       </div>
