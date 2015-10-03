@@ -9,22 +9,16 @@
 <div class="mainContent container">
   <div class="row">
     <div class="col-lg-12">
-      <div class="col-md-4 col-lg-4 col-sm-6" ng-repeat="poll in poll.polls">
-
-
+      <div class="col-md-4 col-lg-4 col-sm-6" ng-repeat="aPoll in poll.polls">
         <h3>{{poll.name}}</h3>
         <ol>
-          <li ng-repeat="options in poll.options">{{options}}
-            <span> votes: {{poll.votes[$index]}}</span>
+          <li ng-repeat="options in aPoll.options">{{options}}
+            <span> votes: {{aPoll.votes[$index]}}</span>
           </li>
         </ol>
-
+        <canvas id="{{'doughnutChart' + $index}}" class="chart chart-doughtnut" chart-data="votes" chart-labels="options"></canvas>
       </div>
     </div>
   </div>
-
-
 </div>
-
-
 <footer></footer>

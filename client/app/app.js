@@ -6,7 +6,8 @@ angular.module('freeTheVoteApp', [
   'ngSanitize',
   'ngRoute',
   'ui.bootstrap',
-  'validation.match'
+  'validation.match',
+  'chart.js'
 ])
   .config(function($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider

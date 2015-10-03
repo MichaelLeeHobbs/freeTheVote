@@ -8,4 +8,7 @@ angular.module('freeTheVoteApp')
     $http.get('/api/polls').then(function(response) {
       self.polls = response.data;
     });
+
+    $scope.options = ['a', 'b', 'c'];
+    $scope.votes = ['3', '5', '13'];
   });
