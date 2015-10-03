@@ -63,8 +63,8 @@ Poll.find({}).removeAsync()
     Poll.create({
         ownerId: ownerId,
         name:    'Fake Poll 1',
-        options: ['Fake Option 1', 'Fake Option 2', 'Fake Option 3'],
-        votes:   [5, 7, 9]
+        options: ['Fake Option 1', 'Fake Option 2', 'Fake Option 3', 'Fake Option 4', 'Fake Option 5'],
+        votes:   [1, 7, 9, 0, 13]
       }, {
         ownerId: ownerId,
         name:    'Fake Poll 2',
