@@ -5,6 +5,9 @@ angular.module('freeTheVoteApp')
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
+    },{
+      'title': 'View Polls',
+      'link': '/poll'
     }];
 
     $scope.isCollapsed = true;
