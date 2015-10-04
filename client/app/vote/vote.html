@@ -1,0 +1,20 @@
+<div class="mainContent container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="col-lg-10 col-md-10 col-sm-8" >
+        <h1>{{vote.poll.name}}</h1>
+        <canvas id="doughnutChartLarge"
+                class="chart chart-doughnut"
+                chart-data="vote.poll.votes"
+                chart-labels="vote.poll.options"
+                chart-click="onClick"
+                chart-legend="true">
+        </canvas>
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-4">
+        <button>Vote 1</button>
+        <button>Vote 2</button>
+        <button>Vote 3</button>
+      </div>
+    </div>
+</div>
