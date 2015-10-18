@@ -19,7 +19,7 @@
           <div ng-repeat="option in vote.poll.options">
             <input type="radio" name="option" ng-model="vote.selection" ng-value="$index">{{option}}<br>
           </div>
-          <input type="radio" name="option" ng-model="vote.selection" value="-2"><input ng-focus="vote.selection = -2"
+          <input type="radio" name="option" ng-model="vote.selection" value="new"><input ng-focus="vote.selection = 'new'"
                                                                                         ng-model="vote.newOption"
                                                                                         type="text"><br>
 

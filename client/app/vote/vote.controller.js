@@ -4,18 +4,16 @@ angular.module('freeTheVoteApp')
   .controller('VoteCtrl', function ($scope, $http, $routeParams, $location, $cookies) {
     var self = this;
 
-    // -1 = nothing selected
-    // -2 = new option selected
-    self.selection = -1;
+    // undefined = nothing selected
+    // new = new option selected
+    self.selection = undefined;
     self.newOption = '';
-    self.cookie = $cookies.get($routeParams.pollId);
-    self.hasVoted = (self.cookie !== undefined);
+    self.oldVote = $cookies.get($routeParams.pollId);
+    self.hasVoted = (self.oldVote !== undefined);
 
     if (self.hasVoted) {
-      self.selection = self.cookie;
+      self.selection = self.oldVote;
     }
-
-    console.log(self.cookie);
 
     $http.get('/api/polls').then(function (response) {
       response.data.forEach(function (ele) {
@@ -33,31 +31,42 @@ angular.module('freeTheVoteApp')
     };
 
     $scope.onSubmit = function () {
-      console.log(self.selection);
-      console.log(self.newOption);
-      if (self.selection === -1) {
+      // if no option selected return
+      if (self.selection === undefined) {
         return;
       }
-
+      // if has voted then remove 1 vote from old vote
       if (self.hasVoted) {
-        if (self.poll.votes[self.cookie] > 0) {
-          self.poll.votes[self.cookie]--;
+        if (self.poll.votes[self.oldVote] > 0) {
+          self.poll.votes[self.oldVote]--;
+          self.hasVoted = false;
         }
-        self.cookie = -1;
       }
 
-      if (self.selection !== -2) {
-        self.poll.votes[self.selection]++;
-      }
+      // if selection is equal to 'new' then add option and one vote
+      if (self.selection === 'new') {
 
-      if (self.selection === -2) {
         // see if the option already exist
+        var result = self.poll.options.some(function(ele, i){
+          if (ele.toString().toLowerCase() === self.newOption.toLowerCase()){
+            // new option already exist so set selection to index
+            self.selection = i;
+            return true;
+          }
+        });
 
+        // new option doesn't exist so add it
+        if (result === false) {
+          self.poll.votes.push(1);
+          self.poll.options.push(self.newOption);
+          self.selection = self.poll.votes.length - 1;
+          self.hasVoted = true;
+        }
+      }
 
-
-        self.poll.votes.push(1);
-        self.poll.options.push(self.newOption);
-        self.selection = self.poll.votes.length - 1;
+      // if selection is not equal to 'new' then add one vote
+      if (self.hasVoted === false) {
+        self.poll.votes[self.selection]++;
       }
 
       $http.put('/api/polls/' + self.poll._id + '/vote', self.poll)
@@ -65,7 +74,7 @@ angular.module('freeTheVoteApp')
           self.poll = res.data;
           self.hasVoted = true;
           $cookies.put(self.poll._id, self.selection);
-          self.cookie = $cookies.get($routeParams.pollId);
+          self.oldVote = $cookies.get($routeParams.pollId);
         }).catch(function(err){
           console.log('error: ' + err);
         });
