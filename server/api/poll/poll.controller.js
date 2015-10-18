@@ -40,7 +40,8 @@ function handleEntityNotFound(res) {
 
 function saveUpdates(updates) {
   return function(entity) {
-    var updated = _.merge(entity, updates);
+    var updated = _.extend(entity, updates);
+    // changed _.merge to _.extend
     return updated.saveAsync()
       .spread(function(updated) {
         return updated;
@@ -99,9 +100,6 @@ exports.vote = function(req, res) {
     delete req.body._id;
   }
   Poll.findByIdAsync(req.params.id)
-    .then(function (res){
-      console.log(res);
-    })
     .then(handleEntityNotFound(res))
     .then(saveUpdates(req.body))
     .then(responseWithResult(res))
