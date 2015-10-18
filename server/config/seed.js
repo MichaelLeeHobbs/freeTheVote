@@ -62,49 +62,58 @@ Poll.find({}).removeAsync()
   .then(function () {
     Poll.create({
         ownerId: ownerId,
-        name:    'Fake Poll 1',
-        options: ['Fake Option 1', 'Fake Option 2', 'Fake Option 3', 'Fake Option 4', 'Fake Option 5'],
-        votes:   [1, 7, 9, 0, 13]
+        name:    'Free will is only an illusion. Your answer has been determined but not predetermined. Even if you believe in the divine it is not by fate or predestination. It is not indeterminate or by chance. So what have the events from the beginning of time and until now led you to choose?',
+        title: 'Free Will?',
+        options: ['Determinism', 'Predeterminism', 'Fatalism', 'Predestination', 'Indeterminism', 'Chance', 'Free will'],
+        votes:   [1, 7, 9, 0, 13, 1, 7]
       }, {
         ownerId: ownerId,
         name:    'Fake Poll 2',
+        title: 'Poll 2?',
         options: ['Fake Option 1', 'Fake Option 2', 'Fake Option 3'],
         votes:   [5, 7, 9]
       }, {
         ownerId: ownerId,
         name:    'Fake Poll 3',
+        title: 'Poll 3?',
         options: ['Fake Option 1', 'Fake Option 2', 'Fake Option 3'],
         votes:   [5, 7, 9]
       },
       {
         ownerId: ownerId,
         name:    'Fake Poll 4',
+        title: 'Poll 4?',
         options: ['Fake Option 1', 'Fake Option 2', 'Fake Option 3'],
         votes:   [5, 7, 9]
       }, {
         ownerId: ownerId,
         name:    'Fake Poll 5',
+        title: 'Poll 5?',
         options: ['Fake Option 1', 'Fake Option 2', 'Fake Option 3'],
         votes:   [5, 7, 9]
       }, {
         ownerId: ownerId,
         name:    'Fake Poll 6',
+        title: 'Poll 6?',
         options: ['Fake Option 1', 'Fake Option 2', 'Fake Option 3'],
         votes:   [5, 7, 9]
       },
       {
         ownerId: ownerId,
         name:    'Fake Poll 7',
+        title: 'Poll 7?',
         options: ['Fake Option 1', 'Fake Option 2', 'Fake Option 3'],
         votes:   [5, 7, 9]
       }, {
         ownerId: ownerId,
         name:    'Fake Poll 8',
+        title: 'Poll 8?',
         options: ['Fake Option 1', 'Fake Option 2', 'Fake Option 3'],
         votes:   [5, 7, 9]
       }, {
         ownerId: ownerId,
         name:    'Fake Poll 9',
+        title: 'Poll 9?',
         options: ['Fake Option 1', 'Fake Option 2', 'Fake Option 3'],
         votes:   [5, 7, 9]
       }

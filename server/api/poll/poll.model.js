@@ -6,6 +6,7 @@ var Schema = mongoose.Schema;
 var PollSchema = new Schema({
   ownerId: Number,
   name: String,
+  title: String,
   options: [String],
   votes: [Number],
   active: Boolean
