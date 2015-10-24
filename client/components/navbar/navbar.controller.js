@@ -10,6 +10,11 @@ angular.module('freeTheVoteApp')
       'link': '/poll'
     }];
 
+    var create = {
+      'title': 'Create New Poll',
+      'link': '/create'
+      };
+
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
@@ -18,4 +23,8 @@ angular.module('freeTheVoteApp')
     $scope.isActive = function(route) {
       return route === $location.path();
     };
+
+    if ($scope.isLoggedIn()){
+      $scope.menu.push(create);
+    }
   });
