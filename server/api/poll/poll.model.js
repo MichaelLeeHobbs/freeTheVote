@@ -4,7 +4,7 @@ var mongoose = require('bluebird').promisifyAll(require('mongoose'));
 var Schema = mongoose.Schema;
 
 var PollSchema = new Schema({
-  ownerId: Number,
+  ownerId: String,
   name: String,
   title: String,
   options: [String],
