@@ -1,1 +1,61 @@
-<div>This is the create view.</div>
+<navbar></navbar>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Create Poll</h1>
+    </div>
+    <div class="col-sm-12">
+      <form class="form" name="form" ng-submit="create.submit(form)" novalidate>
+
+        <div class="form-group" ng-class="{ 'has-success': form.name.$valid && create.submitted, 'has-error': form.name.$invalid && submitted }">
+          <label>Name</label>
+          <input type="text" name="name" class="form-control" ng-model="create.poll.name" required/>
+
+          <div class="help-block" ng-show="create.submitted || form.name.$touched">
+            <p ng-show="form.name.$error.required">A name is required.</p>
+          </div>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-success': form.title.$valid && create.submitted, 'has-error': form.title.$invalid && submitted }">
+          <label>Title</label>
+          <input type="text" name="title" class="form-control" ng-model="create.poll.title" required mongoose-error/>
+
+          <div class="help-block" ng-show="create.submitted || form.title.$touched">
+            <p ng-show="form.title.$error.required">A title is required.</p>
+          </div>
+        </div>
+
+        <hr>
+        <div class="form-group" ng-class="{ 'has-success': form.options.$valid && submitted, 'has-error': form.options.$invalid && submitted }">
+
+          <div ng-repeat="option in create.poll.options track by $index">
+            <label>Option {{$index}}</label>
+
+            <div class="input-group">
+              <input type="text" name="{{'option' + $index}}" class="form-control" ng-model="create.poll.options[$index]" required mongoose-error/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default btn-danger" ng-class="{disabled: create.options.count < 3}" ng-click="create.options.remove($index)">-</button>
+                <button type="button" class="btn btn-default btn-success" ng-click="create.options.add($index + 1)">+</button>
+              </span>
+            </div>
+
+            <div class="help-block" ng-show="create.submitted">
+              <p ng-show="form['option' + $index].$error.required">An option is required.</p>
+            </div>
+
+
+          </div>
+        </div>
+
+        <div>
+          <button class="btn btn-inverse btn-lg btn-success" type="submit">
+            Submit
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  <hr>
+</div>

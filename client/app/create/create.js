@@ -5,6 +5,8 @@ angular.module('freeTheVoteApp')
     $routeProvider
       .when('/create', {
         templateUrl: 'app/create/create.html',
-        controller: 'CreateCtrl'
+        controller: 'CreateCtrl',
+        controllerAs: 'create',
+        authenticate: true
       });
   });
