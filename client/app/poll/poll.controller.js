@@ -1,5 +1,6 @@
 'use strict';
 
+//rename poll to polls
 angular.module('freeTheVoteApp')
   .controller('PollCtrl', function ($scope, $http, $location) {
     var self = this;

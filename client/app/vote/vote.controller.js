@@ -1,5 +1,7 @@
 'use strict';
 
+// todo add goBackLink to url to tell the poll if it should return to poll or aggregate
+// todo rename vote to poll
 angular.module('freeTheVoteApp')
   .controller('VoteCtrl', function ($scope, $http, $routeParams, $location, $cookies, Auth, $window) {
     var self = this;
