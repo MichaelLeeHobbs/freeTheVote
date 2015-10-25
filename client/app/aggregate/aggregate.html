@@ -1,0 +1,19 @@
+<navbar></navbar>
+<div class="mainContent container">
+  <div class="row">
+    <button class="btn btn-success" ng-click="aggregate.raw()">Raw Data</button>
+    <div class="col-lg-12">
+      <div class="col-md-4 col-lg-4 col-sm-6" ng-repeat="aPoll in aggregate.polls">
+        <h3>{{aPoll.title}}</h3>
+        <canvas id="{{'aggregateChart' + $index}}"
+                class="chart chart-doughnut"
+                chart-data="aPoll.votes"
+                chart-labels="aPoll.options"
+                chart-click="aPoll.onClick"
+                chart-legend="true">
+        </canvas>
+      </div>
+    </div>
+  </div>
+</div>
+<footer></footer>
