@@ -7,7 +7,8 @@ angular.module('freeTheVoteApp', [
   'ngRoute',
   'ui.bootstrap',
   'validation.match',
-  'chart.js'
+  'chart.js',
+  'ngConfirm'
 ])
   .config(function($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
