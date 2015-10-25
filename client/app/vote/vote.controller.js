@@ -10,6 +10,8 @@ angular.module('freeTheVoteApp')
     self.newOption = '';
     self.oldVote   = $cookies.get($routeParams.pollId);
     self.hasVoted  = (self.oldVote !== undefined);
+    self.link      = $location.absUrl();
+    self.tweet     = 'https://twitter.com/intent/tweet?hashtags=fcc&original_referer=http%3A%2F%2Flocalhost%3A9000%2Fvote%2F562ba365f7f4d9ab396cfa27&ref_src=twsrc%5Etfw&text=Check%20out%20my%20poll%20at&tw_p=tweetbutton&url=http%3A%2F%2Flocalhost%3A9000%2Fvote%2F' + $routeParams.pollId;
     Auth.getCurrentUser(function (user) {
       self.currentUserId = user._id;
       console.log(user);
@@ -86,12 +88,12 @@ angular.module('freeTheVoteApp')
     $scope.message = $routeParams.pollId;
     $scope.delete  = function () {
       $http.delete('/api/polls/' + $routeParams.pollId)
-        .then(function (response) {
+        .then(function () {
           $location.path('/');
         })
         .catch(function () {
           $location.path('/');
         });
     };
-  })
-;
+
+  });
