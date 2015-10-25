@@ -36,6 +36,7 @@ angular.module('freeTheVoteApp')
 
     console.log(self);
 
+    // todo prevent duplicate options
     self.submit = function (form) {
       console.log('submitted');
       self.submitted = true;
