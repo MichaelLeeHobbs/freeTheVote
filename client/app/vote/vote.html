@@ -28,8 +28,7 @@
             <span ng-hide="vote.hasVoted">Vote!</span>
             <span ng-hide="!vote.hasVoted">Change Vote!</span>
           </button>
-
-          </fieldset>
+          <a href="#" ng-confirm="Are you sure?" ng-click="delete()" ng-hide="!vote.isOwner" class="btn btn-lg btn-danger">Delete!</a>
         </form>
       </div>
     </div>
