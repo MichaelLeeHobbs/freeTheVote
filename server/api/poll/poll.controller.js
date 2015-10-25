@@ -1,6 +1,7 @@
 /**
  * Using Rails-like standard naming convention for endpoints.
  * GET     /api/polls              ->  index
+ * GET     /api/polls/byOwner/:id  ->  index by owner
  * POST    /api/polls              ->  create
  * GET     /api/polls/:id          ->  show
  * PUT     /api/polls/:id          ->  update
@@ -63,6 +64,13 @@ function removeEntity(res) {
 // Gets a list of Polls
 exports.index = function(req, res) {
   Poll.findAsync()
+    .then(responseWithResult(res))
+    .catch(handleError(res));
+};
+
+// Gets a list of Polls by Owner id
+exports.indexByOwner = function(req, res) {
+  Poll.findAsync({ownerId:req.params.id})
     .then(responseWithResult(res))
     .catch(handleError(res));
 };
