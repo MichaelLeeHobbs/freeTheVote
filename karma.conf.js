@@ -23,6 +23,7 @@ module.exports = function(config) {
       'client/bower_components/angular-sanitize/angular-sanitize.js',
       'client/bower_components/angular-validation-match/dist/angular-validation-match.min.js',
       'client/bower_components/lodash/dist/lodash.compat.js',
+      'client/bower_components/angular-confirm-button/dist/angular-confirm.min.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'client/app/app.js',
@@ -36,7 +37,7 @@ module.exports = function(config) {
 
     preprocessors: {
       '**/*.jade': 'ng-jade2js',
-      '**/*.html': 'html2js',
+      '**/*.html': 'html2js'
     },
 
     ngHtml2JsPreprocessor: {
@@ -47,7 +48,7 @@ module.exports = function(config) {
       stripPrefix: 'client/'
     },
 
-    
+
 
     // list of files / patterns to exclude
     exclude: [],
