@@ -85,12 +85,13 @@ angular.module('freeTheVoteApp')
 
     $scope.message = $routeParams.pollId;
     $scope.delete  = function () {
-      console.log('deleted');
-
-      $http.delete('/api/polls/' + $routeParams.pollId).then(function (response) {
-        console.log(response);
-      });
-
+      $http.delete('/api/polls/' + $routeParams.pollId)
+        .then(function (response) {
+          $location.path('/');
+        })
+        .catch(function () {
+          $location.path('/');
+        });
     };
   })
 ;
