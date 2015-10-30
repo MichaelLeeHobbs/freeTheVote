@@ -1,28 +1,19 @@
 'use strict';
-(function() {
+(function () {
 
-function MainController($scope, $http) {
-  var self = this;
-  this.awesomeThings = [];
+  function MainController($scope, $http, Auth) {
+    var self           = this;
+    this.awesomeThings = [];
 
-  $http.get('/api/things').then(function(response) {
-    self.awesomeThings = response.data;
-  });
+    $http.get('/api/things').then(function (response) {
+      self.awesomeThings = response.data;
+    });
 
-  this.addThing = function() {
-    if (self.newThing === '') {
-      return;
-    }
-    $http.post('/api/things', { name: self.newThing });
-    self.newThing = '';
-  };
+    $scope.isLoggedIn = Auth.isLoggedIn;
+  }
 
-  this.deleteThing = function(thing) {
-    $http.delete('/api/things/' + thing._id);
-  };
-}
 
-angular.module('freeTheVoteApp')
-  .controller('MainController', MainController);
+  angular.module('freeTheVoteApp')
+    .controller('MainController', MainController);
 
 })();
