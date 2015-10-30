@@ -17,6 +17,8 @@ angular.module('freeTheVoteApp')
           self.polls.forEach(function (ele) {
             ele.onClick = function () {
               $location.path('/poll/' + ele._id + '/aggregate');
+              // ugly hack to fix fb-comments disappearing problem when view has previously been hidden
+              $window.location.reload();
             };
           });
           console.log(self.polls);
