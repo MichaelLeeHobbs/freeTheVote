@@ -28,7 +28,6 @@ angular.module('freeTheVoteApp')
     }
 
     $http.get('/api/polls/' + $routeParams.pollId).then(function (response) {
-      console.log(response);
       self.poll    = response.data;
       self.isOwner = (self.poll.ownerId === self.currentUserId);
     }).catch(function () {
@@ -101,6 +100,7 @@ angular.module('freeTheVoteApp')
         });
     };
     $scope.socialWidth = $('#socialDiv').width();
+
     angular.element($window).bind('resize', function(){
       $('.fb-comments iframe,.fb-comments span:first-child').css({'width':$('#socialDiv').width()});
     });
