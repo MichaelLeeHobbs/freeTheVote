@@ -14,6 +14,10 @@ angular.module('freeTheVoteApp')
       'title': 'Create New Poll',
       'link': '/create'
       };
+    var aggregate = {
+      'title': 'Aggregate View',
+      'link': '/aggregate'
+    };
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
@@ -26,5 +30,6 @@ angular.module('freeTheVoteApp')
 
     if ($scope.isLoggedIn()){
       $scope.menu.push(create);
+      $scope.menu.push(aggregate);
     }
   });
