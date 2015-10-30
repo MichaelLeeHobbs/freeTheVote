@@ -3,33 +3,33 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="col-lg-8 col-md-8 col-sm-6">
-        <h1>{{vote.poll.title}}</h1>
+        <h1>{{poll.poll.title}}</h1>
         <canvas id="doughnutChartLarge"
                 class="chart chart-doughnut"
-                chart-data="vote.poll.votes"
-                chart-labels="vote.poll.options"
+                chart-data="poll.poll.votes"
+                chart-labels="poll.poll.options"
                 chart-click="onClick"
                 chart-legend="true">
         </canvas>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-6">
         <form class="text-left" name="form" ng-submit="onSubmit(form)">
-          <legend><h4>{{vote.poll.name}}</h4></legend>
+          <legend><h4>{{poll.poll.name}}</h4></legend>
 
-          <div ng-repeat="option in vote.poll.options track by $index">
-            <input type="radio" name="option" ng-model="vote.selection" ng-value="$index">{{option}}<br>
+          <div ng-repeat="option in poll.poll.options track by $index">
+            <input type="radio" name="option" ng-model="poll.selection" ng-value="$index">{{option}}<br>
           </div>
-          <input type="radio" name="option" ng-model="vote.selection" value="new"><input ng-focus="vote.selection = 'new'"
-                                                                                         ng-model="vote.newOption"
+          <input type="radio" name="option" ng-model="poll.selection" value="new"><input ng-focus="poll.selection = 'new'"
+                                                                                         ng-model="poll.newOption"
                                                                                          type="text"><br>
 
           <br>
           <button class="btn btn-lg btn-success" type="submit">
-            <span ng-hide="vote.hasVoted">Vote!</span>
-            <span ng-hide="!vote.hasVoted">Change Vote!</span>
+            <span ng-hide="poll.hasVoted">Vote!</span>
+            <span ng-hide="!poll.hasVoted">Change Vote!</span>
           </button>
-          <a href="#" ng-click="vote.raw()" ng-hide="!vote.isOwner" class="btn btn-lg btn-default">Raw Data</a>
-          <a href="#" ng-confirm="Are you sure?" ng-click="delete()" ng-hide="!vote.isOwner" class="btn btn-lg btn-danger">Delete!</a>
+          <a href="#" ng-click="poll.raw()" ng-hide="!poll.isOwner" class="btn btn-lg btn-default">Raw Data</a>
+          <a href="#" ng-confirm="Are you sure?" ng-click="delete()" ng-hide="!poll.isOwner" class="btn btn-lg btn-danger">Delete!</a>
         </form>
       </div>
     </div>
@@ -42,14 +42,14 @@
           <h3>Share this poll!</h3>
 
           <div class="input-group input-group-lg">
-            <input class="form-control input-lg" ng-model="vote.link" type="text" readonly onfocus="$(this).select();" onmouseup="return false;">
+            <input class="form-control input-lg" ng-model="poll.link" type="text" readonly onfocus="$(this).select();" onmouseup="return false;">
             <span class="input-group-btn">
-              <a href="{{vote.tweet}}" class="btn btn-lg btn-twitter" type="submit"><i class="fa fa-twitter" style="font-size: 20px; "></i> Tweet</a>
+              <a href="{{poll.tweet}}" class="btn btn-lg btn-twitter" type="submit"><i class="fa fa-twitter" style="font-size: 20px; "></i> Tweet</a>
             </span>
           </div>
         </div>
       </form>
-      <div class="fb-comments" data-href="{{vote.link}}" data-width="{{socialWidth}}" data-numposts="5"></div>
+      <div class="fb-comments" data-href="{{poll.link}}" data-width="{{socialWidth}}" data-numposts="5"></div>
     </div>
   </div>
 </div>

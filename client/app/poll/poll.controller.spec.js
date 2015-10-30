@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller: VoteCtrl', function () {
+describe('Controller: PollCtrl', function () {
 
   // load the controller's module
   beforeEach(module('freeTheVoteApp'));
@@ -10,7 +10,7 @@ describe('Controller: VoteCtrl', function () {
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    VoteCtrl = $controller('VoteCtrl', {
+    VoteCtrl = $controller('PollCtrl', {
       $scope: scope
     });
   }));

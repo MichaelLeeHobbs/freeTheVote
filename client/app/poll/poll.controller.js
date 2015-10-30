@@ -3,7 +3,7 @@
 // todo add goBackLink to url to tell the poll if it should return to poll or aggregate
 // todo rename vote to poll
 angular.module('freeTheVoteApp')
-  .controller('VoteCtrl', function ($scope, $http, $routeParams, $location, $cookies, Auth, $window) {
+  .controller('PollCtrl', function ($scope, $http, $routeParams, $location, $cookies, Auth, $window) {
     var self = this;
 
     // undefined = nothing selected
@@ -13,7 +13,7 @@ angular.module('freeTheVoteApp')
     self.oldVote   = $cookies.get($routeParams.pollId);
     self.hasVoted  = (self.oldVote !== undefined);
     self.link      = $location.absUrl();
-    self.tweet     = 'https://twitter.com/intent/tweet?hashtags=fcc&original_referer=http%3A%2F%2Flocalhost%3A9000%2Fvote%2F562ba365f7f4d9ab396cfa27&ref_src=twsrc%5Etfw&text=Check%20out%20my%20poll%20at&tw_p=tweetbutton&url=http%3A%2F%2Flocalhost%3A9000%2Fvote%2F' + $routeParams.pollId;
+    self.tweet     = 'https://twitter.com/intent/tweet?hashtags=fcc&original_referer=http%3A%2F%2Flocalhost%3A9000%2Fpoll%2F562ba365f7f4d9ab396cfa27&ref_src=twsrc%5Etfw&text=Check%20out%20my%20poll%20at&tw_p=tweetbutton&url=http%3A%2F%2Flocalhost%3A9000%2Fpoll%2F' + $routeParams.pollId;
     self.raw       = function() {
       $window.open('http://' + $location.host() + ':' + $location.port() + '/api/polls/' + $routeParams.pollId);
     };

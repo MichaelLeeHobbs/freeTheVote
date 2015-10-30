@@ -10,7 +10,7 @@ angular.module('freeTheVoteApp')
         self.polls = response.data;
         self.polls.forEach(function (ele) {
           ele.onClick = function () {
-            $location.path('/vote/' + ele._id);
+            $location.path('/poll/' + ele._id);
           };
         });
       });
