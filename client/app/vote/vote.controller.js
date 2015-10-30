@@ -100,5 +100,8 @@ angular.module('freeTheVoteApp')
           $location.path('/');
         });
     };
-
+    $scope.socialWidth = $('#socialDiv').width();
+    angular.element($window).bind('resize', function(){
+      $('.fb-comments iframe,.fb-comments span:first-child').css({'width':$('#socialDiv').width()});
+    });
   });
