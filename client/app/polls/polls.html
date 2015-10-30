@@ -9,7 +9,7 @@
 <div class="mainContent container">
   <div class="row">
     <div class="col-lg-12">
-      <div class="col-md-4 col-lg-4 col-sm-6" ng-repeat="aPoll in poll.polls">
+      <div class="col-md-4 col-lg-4 col-sm-6" ng-repeat="aPoll in polls.polls">
         <h3>{{aPoll.title}}</h3>
         <canvas id="{{'pollChart' + $index}}"
                 class="chart chart-doughnut"

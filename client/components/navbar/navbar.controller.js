@@ -7,7 +7,7 @@ angular.module('freeTheVoteApp')
       'link': '/'
     },{
       'title': 'View Polls',
-      'link': '/poll'
+      'link': '/polls'
     }];
 
     var create = {

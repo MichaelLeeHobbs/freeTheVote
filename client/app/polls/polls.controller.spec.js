@@ -5,12 +5,12 @@ describe('Controller: PollCtrl', function () {
   // load the controller's module
   beforeEach(module('freeTheVoteApp'));
 
-  var PollCtrl, scope;
+  var PollsCtrl, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    PollCtrl = $controller('PollCtrl', {
+    PollsCtrl = $controller('PollsCtrl', {
       $scope: scope
     });
   }));
