@@ -35,7 +35,7 @@ angular.module('freeTheVoteApp')
     });
 
     $scope.onClick = function () {
-      $location.path('/polls');
+      $location.path('/' + $routeParams.linkBack);
     };
 
     $scope.onSubmit = function () {

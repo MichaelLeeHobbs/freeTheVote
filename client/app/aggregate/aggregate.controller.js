@@ -16,7 +16,7 @@ angular.module('freeTheVoteApp')
           //self.raw = 'http://' + $location.host() + ':' + $location.port() + '/api/polls/byOwner/' + self.currentUserId;
           self.polls.forEach(function (ele) {
             ele.onClick = function () {
-              $location.path('/vote/' + ele._id);
+              $location.path('/poll/' + ele._id + '/aggregate');
             };
           });
           console.log(self.polls);
