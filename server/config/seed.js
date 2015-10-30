@@ -21,7 +21,7 @@ Thing.find({}).removeAsync()
     }, {
       name: 'Social Integration',
       icon: 'fa-facebook',
-      info: 'Free integrated facebook or traditional comments allow your poll voters to provide immediate feedback and discuss results. Social share buttons encourage your poll voters to help spread the word.'
+      info: 'Free integrated facebook comments allow your poll voters to provide immediate feedback and discuss results. Social share buttons encourage your poll voters to help spread the word.'
     });
   });
 
