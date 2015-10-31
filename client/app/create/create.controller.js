@@ -43,7 +43,7 @@ angular.module('freeTheVoteApp')
       if (form.$valid) {
         $http.post('/api/polls/', self.poll)
           .then(function (res) {
-            $location.path( '/poll/' + res.data._id );
+            $location.path( '/poll/' + res.data._id + '/polls' );
             console.log(res);
           }).catch(function (err) {
             console.log('error: ' + err);
