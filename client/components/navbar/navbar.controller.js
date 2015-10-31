@@ -4,20 +4,21 @@ angular.module('freeTheVoteApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
     $scope.menu = [{
       'title': 'Home',
-      'link': '/'
+      'link': '/',
+      'requireLoggedIn': false
     },{
       'title': 'View Polls',
-      'link': '/polls'
-    }];
-
-    var create = {
+      'link': '/polls',
+      'requireLoggedIn': false
+    },{
       'title': 'Create New Poll',
-      'link': '/create'
-      };
-    var aggregate = {
+      'link': '/create',
+      'requireLoggedIn': true
+    },{
       'title': 'Aggregate View',
-      'link': '/aggregate'
-    };
+      'link': '/aggregate',
+      'requireLoggedIn': true
+    }];
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
@@ -27,9 +28,9 @@ angular.module('freeTheVoteApp')
     $scope.isActive = function(route) {
       return route === $location.path();
     };
+    $scope.shouldShow = function(requireLoggedIn) {
+      if (!requireLoggedIn) { return true; }
+      return $scope.isLoggedIn();
+    };
 
-    if ($scope.isLoggedIn()){
-      $scope.menu.push(create);
-      $scope.menu.push(aggregate);
-    }
   });
